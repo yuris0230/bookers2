@@ -1,15 +1,27 @@
-<nav>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to "Home",  root_path %></li>
-      <li><%= link_to "Users", users_path %></li>
-      <li><%= link_to "Books", books_path %></li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to "Home",  root_path %></li>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Sign up", new_user_registration_path %></li>
-      <li><%= link_to "Log in",  new_user_session_path %></li>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <i class="fa-solid fa-book-open mr-2"></i> Bookers2
     <% end %>
-  </ul>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="nav" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item"><%= link_to "Home",  root_path,  class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Users", users_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Books", books_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+        <% else %>
+          <li class="nav-item"><%= link_to "Home",  root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Log in",  new_user_session_path,   class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </nav>
