@@ -16,8 +16,9 @@
         <% @books.each do |book| %>
           <tr>
             <td style="width:100px">
-              <%= image_tag book.user.get_profile_image(100,100), class: "rounded" %>
-              <%# <%= link_to book.user.name, book.user %>
+              <%= link_to user_path(book.user) do %>
+                <%= image_tag book.user.get_profile_image(100,100), class: "rounded" %>
+              <% end %>
             </td>
             <td class="text-right align-middle"><%= link_to book.title, book %></td>
             <td class="text-right align-middle"><%= truncate(book.body, length: 80) %></td>
