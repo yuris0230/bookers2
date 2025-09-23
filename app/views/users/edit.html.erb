@@ -1,4 +1,6 @@
 <h2>Edit Profile</h2>
+<%= render "shared/error_messages", resource: @user %>
+
 <%= form_with model: @user, local: true do |f| %>
   <div>
     <%= f.label :name %>

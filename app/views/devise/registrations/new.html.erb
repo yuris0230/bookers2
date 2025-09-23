@@ -1,6 +1,7 @@
 <h2>Sign up</h2>
 
-<%= form_with model: @user, url: user_registration_path do |f| %>
+<%= form_with model: resource, as: resource_name, url: registration_path(resource_name), local: true do |f| %>
+  <%= render "shared/error_messages", resource: resource %>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -15,7 +16,7 @@
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
