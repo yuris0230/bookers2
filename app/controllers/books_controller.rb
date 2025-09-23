@@ -19,7 +19,7 @@ class BooksController < ApplicationController
       redirect_to @book, notice: "Book was successfully created."
     else
       @books = Book.includes(:user).order(created_at: :desc)
-      @sidebar_user = current_user   # ✅ ต้องเพิ่ม
+      @sidebar_user = current_user
       flash.now[:alert] = "error: Could not create book."
       render :index, status: :unprocessable_entity
     end
