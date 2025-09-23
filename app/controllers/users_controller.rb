@@ -4,10 +4,20 @@ class UsersController < ApplicationController
   before_action :ensure_myself!, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @sidebar_user = current_user
+    @book = Book.new
+    @users = User.order(:id)
+  end
+
+  def info
+    @sidebar_user = current_user
+    @book = Book.new
+    @books = current_user.books
   end
 
   def show
+    @sidebar_user = current_user
+    @book = Book.new
     @books = @user.books.order(created_at: :desc)
   end
 

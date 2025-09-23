@@ -4,11 +4,13 @@ class BooksController < ApplicationController
   before_action :ensure_owner!, only: [:edit, :update, :destroy]
 
   def index
-    @book  = Book.new
-    @books = Book.includes(:user).order(created_at: :desc)
+    @books = Book.all
+    @book = Book.new
+    @sidebar_user = current_user
   end
 
   def show
+    @sidebar_user = current_user
   end
 
   def create

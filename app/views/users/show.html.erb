@@ -1,14 +1,22 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "Edit", edit_user_path(@user) %></p>
-  <% end %>
-</div>
+<div class="row">
+  <aside class="col-md-3 text-center">
+    <%= image_tag @user.get_profile_image(200,200), class: "img-fluid rounded mb-2" %>
+    <h4><%= @user.name %></h4>
+    <p class="text-muted"><%= @user.introduction %></p>
+    <% if @user == current_user %>
+      <%= link_to "Edit", edit_user_path(@user), class: "btn btn-outline-secondary btn-sm" %>
+    <% end %>
+  </aside>
 
-<h3>Books</h3>
-<ul>
-  <% @user.books.each do |b| %>
-    <li><%= link_to b.title, b %></li>
-  <% end %>
-</ul>
+  <section class="offset-md-1 col-md-8">
+    <h3 class="mb-3">Books</h3>
+    <ul class="list-group">
+      <% @user.books.each do |b| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to b.title, b %>
+          <span class="badge badge-light"><%= b.user.name %></span>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</div>

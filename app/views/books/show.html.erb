@@ -1,7 +1,22 @@
-<h3><%= @book.title %></h3>
-<p><strong>Opinion:</strong> <%= simple_format(@book.body) %></p>
-<p><strong>Author:</strong> <%= link_to @book.user.name, @book.user %></p>
-<%= link_to "Back", books_path %>
-<% if @book.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@book) %>
-<% end %>
+<div class="row">
+  <%= render "shared/sidebar", user: @sidebar_user, book: Book.new %>
+
+  <section class="offset-md-1 col-md-8">
+    <div class="media mb-4">
+      <%= image_tag @book.user.profile_image_variant(100,100), class: "mr-3 rounded" %>
+      <div class="media-body">
+        <h3 class="mt-0 mb-1"><%= @book.title %></h3>
+        <p class="text-muted mb-2">by <%= link_to @book.user.name, @book.user %></p>
+        <p><%= simple_format(@book.body) %></p>
+      </div>
+    </div>
+
+    <%= link_to "Back", books_path, class: "btn btn-secondary" %>
+    <% if @book.user == current_user %>
+      <%= link_to "Edit", edit_book_path(@book), class: "btn btn-outline-primary" %>
+      <%= link_to "Destroy", @book, method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: "btn btn-outline-danger" %>
+    <% end %>
+  </section>
+</div>
