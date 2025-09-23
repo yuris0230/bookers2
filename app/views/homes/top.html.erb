@@ -1,4 +1,9 @@
 <div class="jumbotron text-center">
   <h1 class="display-4">Welcome to Bookers !!</h1>
   <p class="lead">In Bookers, you can share and exchange your opinions, inpressions and emotions about various books!</p>
+
+  <div class="mt-4">
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-info btn-lg btn-block mb-2" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-lg btn-block" %>
+  </div>
 </div>

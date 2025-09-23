@@ -7,18 +7,19 @@
       <thead>
         <tr>
           <th></th>
-          <th>Title</th>
-          <th>Opinion</th>
+          <th class="text-right align-middle" >Title</th>
+          <th class="text-right align-middle" >Opinion</th>
+          <th class="text-right"></th>
         </tr>
       </thead>
       <tbody>
         <% @books.each do |book| %>
           <tr>
             <td style="width:100px">
-              <%= image_tag book.user.get_profile_image(80,80), class: "rounded" %>
+              <%= image_tag book.user.get_profile_image(100,100), class: "rounded" %>
             </td>
-            <td><%= link_to book.title, book %></td>
-            <td><%= truncate(book.body, length: 80) %></td>
+            <td class="text-right align-middle" ><%= link_to book.title, book %></td>
+            <td class="text-right align-middle" ><%= truncate(book.body, length: 80) %></td>
           </tr>
         <% end %>
       </tbody>
