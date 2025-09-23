@@ -16,9 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @sidebar_user = current_user
-    @book = Book.new
+    @user = User.find(params[:id])
     @books = @user.books.order(created_at: :desc)
+    @sidebar_user = @user
+    @book = Book.new
+
+    render "books/index"
   end
 
   def edit
