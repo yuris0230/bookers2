@@ -1,0 +1,7 @@
+<h3><%= @book.title %></h3>
+<p><strong>Opinion:</strong> <%= simple_format(@book.body) %></p>
+<p><strong>Author:</strong> <%= link_to @book.user.name, @book.user %></p>
+<%= link_to "Back", books_path %>
+<% if @book.user == current_user %>
+  <%= link_to "Edit", edit_book_path(@book) %>
+<% end %>
