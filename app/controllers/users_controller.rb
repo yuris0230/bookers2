@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!           # ไม่ล็อกอิน → ไปหน้า login
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update]
   before_action :ensure_myself!, only: [:edit, :update]
 
@@ -10,9 +10,11 @@ class UsersController < ApplicationController
   end
 
   def info
-    @sidebar_user = current_user
+    @user = current_user
+    @books = @user.books.order(created_at: :desc)
+    @sidebar_user = @user
     @book = Book.new
-    @books = current_user.books
+    render "books/index"
   end
 
   def show

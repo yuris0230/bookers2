@@ -6,6 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%# import font %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;600&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/d31d06fbbc.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,7 +21,11 @@
     <div class="container mt-3">
       <% if notice %><div class="alert alert-success"><%= notice %></div><% end %>
       <% if alert  %><div class="alert alert-danger"><%= alert  %></div><% end %>
+    <%# for sticky footer %>
+    <body class="d-flex flex-column min-vh-100">
+    <div class="flex-grow-1">
       <%= yield %>
     </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
